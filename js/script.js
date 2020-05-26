@@ -37,7 +37,20 @@ const pageItems = 10;
        "invoke" the function 
 ***/
 
+function showPage(list, page) {
+   const startIndex = (page * pageItems) - pageItems;
+   const endIndex = page * pageItems;
 
+   for(let i = 0; i <= list.length; i++) {
+      if(i >= startIndex && i < endIndex) {
+         list[i].style.display = 'block';
+      }else {
+         list[i].style.display = 'none';
+      }
+   }
+}
+
+showPage(li, 1);
 
 
 /*** 
