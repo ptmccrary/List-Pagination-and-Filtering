@@ -11,7 +11,8 @@ FSJS project 2 - List Filter and Pagination
    need to reference and/or manipulate. 
 ***/
 
-const li = document.getElementsByClassName('student-item');
+const studentList = document.querySelector('.student-list');
+const students = studentList.children;
 const pageItems = 10;
 
 
@@ -25,7 +26,8 @@ function showPage(list, page) {
    const startIndex = (page * pageItems) - pageItems;
    const endIndex = page * pageItems;
 
-   for(let i = 0; i <= list.length; i++) {
+   for(let i = 0; i < list.length; i++) {
+      console.log(list);
       if(i >= startIndex && i < endIndex) {
          list[i].style.display = 'block';
       }else {
@@ -40,7 +42,7 @@ function showPage(list, page) {
 ***/
 
 function appendPageLinks(list) {
-   const numPages = Math.ceil(li.length/pageItems);
+   const numPages = Math.ceil(students.length/pageItems);
    
    const newDiv = document.createElement('div');
    newDiv.className = 'pagination';
@@ -65,5 +67,5 @@ function appendPageLinks(list) {
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
 
-showPage(li, 1);
-appendPageLinks(li);
+showPage(students, 1);
+appendPageLinks(students);
