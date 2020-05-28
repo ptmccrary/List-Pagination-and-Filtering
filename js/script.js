@@ -27,7 +27,6 @@ function showPage(list, page) {
    const endIndex = page * pageItems;
 
    for(let i = 0; i < list.length; i++) {
-      console.log(list);
       if(i >= startIndex && i < endIndex) {
          list[i].style.display = 'block';
       }else {
@@ -42,7 +41,7 @@ function showPage(list, page) {
 ***/
 
 function appendPageLinks(list) {
-   const numPages = Math.ceil(students.length/pageItems);
+   const numPages = Math.floor(students.length/pageItems);
    
    const newDiv = document.createElement('div');
    newDiv.className = 'pagination';
@@ -61,8 +60,6 @@ function appendPageLinks(list) {
       newLi.appendChild(newA);
       document.querySelector('.pageButtons').appendChild(newLi);
    }
-
-   
 }
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
