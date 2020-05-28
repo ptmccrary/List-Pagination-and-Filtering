@@ -1,14 +1,5 @@
-/******************************************
-Treehouse Techdegree:
-FSJS project 2 - List Filter and Pagination
-******************************************/
-   
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-
-
 /*** 
-   Add your global variables that store the DOM elements you will 
-   need to reference and/or manipulate. 
+   Global variables
 ***/
 
 const studentList = document.querySelector('.student-list');
@@ -18,8 +9,7 @@ const pageItems = 10;
 
 
 /*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
+   showPage() function displays 10 students to each page at a time.
 ***/
 
 function showPage(list, page) {
@@ -36,8 +26,8 @@ function showPage(list, page) {
 }
 
 /*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
+   appendPageLinks() function creates clickable list to navigate
+   through different pages.
 ***/
 
 function appendPageLinks(list) {
@@ -71,11 +61,11 @@ function appendPageLinks(list) {
          showPage(students, newA.textContent)
       })
    }
-   
-//   newUl.firstElementChild.firstElementChild.className = 'active';
 }
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+/***
+   Call functions
+***/
 
 showPage(students, 1);
 appendPageLinks(students);
