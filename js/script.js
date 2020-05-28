@@ -68,6 +68,7 @@ function appendPageLinks(list) {
             active.classList.remove('active');
          }
          e.target.className = 'active';
+         showPage(students, newA.textContent)
       })
    }
    
