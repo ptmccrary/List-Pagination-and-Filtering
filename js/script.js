@@ -60,6 +60,8 @@ function appendPageLinks(list) {
       newLi.appendChild(newA);
       document.querySelector('.pageButtons').appendChild(newLi);
    }
+   
+   newUl.firstElementChild.firstElementChild.className = 'active';
 }
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
