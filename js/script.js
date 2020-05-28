@@ -59,9 +59,19 @@ function appendPageLinks(list) {
       newA.innerText = i + 1;
       newLi.appendChild(newA);
       document.querySelector('.pageButtons').appendChild(newLi);
+
+      newUl.firstElementChild.firstElementChild.className = 'active';
+      
+      newA.addEventListener('click', (e) => {
+         let active = document.querySelector('.active');
+         if(active !== null){
+            active.classList.remove('active');
+         }
+         e.target.className = 'active';
+      })
    }
    
-   newUl.firstElementChild.firstElementChild.className = 'active';
+//   newUl.firstElementChild.firstElementChild.className = 'active';
 }
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
