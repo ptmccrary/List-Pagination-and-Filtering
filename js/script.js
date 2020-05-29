@@ -83,15 +83,15 @@ function searchBar() {
    document.querySelector('input').addEventListener('keyup', (e) => {
       let input = e.target;
       let filter = input.value.toUpperCase();
-      let list = document.querySelectorAll('.student-item');
+      let newList = document.querySelectorAll('.student-item');
 
-      for(i = 0; i < list.length; i++){
-         let li = list[i];
-         let name = list[i].getElementsByTagName('h3')[0];
+      for(i = 0; i < newList.length; i++){
+         let li = newList[i];
+         let name = newList[i].getElementsByTagName('h3')[0];
          let value = name.textContent;
 
          if(value.toUpperCase().indexOf(filter) > -1){
-            li.style.display = 'block';
+            li.style.display = '';
             li.className = 'student-item cf selected';
          } else{
             li.style.display = 'none';
