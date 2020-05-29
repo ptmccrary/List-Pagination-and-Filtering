@@ -1,5 +1,5 @@
 /*** 
-   Global variables
+ * Global variables
 ***/
 
 const studentList = document.querySelector('.student-list');
@@ -9,7 +9,7 @@ const pageItems = 10;
 
 
 /*** 
-   showPage() function displays 10 students to each page at a time.
+ * showPage() function displays 10 students to each page at a time.
 ***/
 
 function showPage(list, page) {
@@ -26,8 +26,8 @@ function showPage(list, page) {
 }
 
 /*** 
-   appendPageLinks() function creates clickable list to navigate
-   through different pages.
+ * appendPageLinks() function creates clickable list to navigate
+ * through different pages.
 ***/
 
 function appendPageLinks(list) {
@@ -64,8 +64,27 @@ function appendPageLinks(list) {
 }
 
 /***
-   Call functions
+ * searchBar() is used to search for a specific person, or group of people. 
+ ***/
+
+ function searchBar() {
+    const newDiv = document.createElement('div');
+    newDiv.className = 'student-search';
+    document.querySelector('.page-header').appendChild(newDiv);
+
+    const newInput = document.createElement('input');
+    newInput.placeholder = 'Search for students...';
+    document.querySelector('.student-search').appendChild(newInput);
+
+    const newButton = document.createElement('button')
+    newButton.innerText = 'Search';
+    document.querySelector('.student-search').appendChild(newButton);
+ }
+
+/***
+ *  Call functions
 ***/
 
 showPage(students, 1);
 appendPageLinks(students);
+searchBar();
