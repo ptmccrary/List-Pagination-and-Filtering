@@ -2,8 +2,7 @@
  * Global variables
 ***/
 
-const studentList = document.querySelector('.student-list');
-const students = studentList.children;
+const students = document.getElementsByClassName('student-item');
 const pageItems = 10;
 
 
@@ -31,7 +30,12 @@ function showPage(list, page) {
 ***/
 
 function appendPageLinks(list) {
-   const numPages = Math.floor(students.length/pageItems);
+   const numPages = Math.floor(list.length/pageItems);
+
+   const existingDiv = document.querySelector('.pagination');
+   if (existingDiv){
+      existingDiv.parentNode.removeChild(existingDiv);
+   }
    
    const newDiv = document.createElement('div');
    newDiv.className = 'pagination';
@@ -50,6 +54,7 @@ function appendPageLinks(list) {
       newLi.appendChild(newA);
       document.querySelector('.pageButtons').appendChild(newLi);
 
+      showPage(list, 1);
       newUl.firstElementChild.firstElementChild.className = 'active';
       
       newA.addEventListener('click', (e) => {
@@ -82,6 +87,28 @@ function searchBar() {
 
    document.querySelector('input').addEventListener('keyup', (e) => {
       let input = e.target;
+      let filter = input.value.toUpperCase();
+      let newList = document.querySelectorAll('.student-item');
+
+      for(i = 0; i < newList.length; i++){
+         let li = newList[i];
+         let name = newList[i].getElementsByTagName('h3')[0];
+         let value = name.textContent;
+
+         if(value.toUpperCase().indexOf(filter) > -1){
+            li.style.display = '';
+            li.className = 'student-item cf selected';
+         } else{
+            li.style.display = 'none';
+            li.className = 'student-item cf';
+         }
+      }
+      const arr = document.getElementsByClassName('selected');
+      appendPageLinks(arr);
+   })
+   
+   document.querySelector('button').addEventListener('click', (e) => {
+      let input = document.querySelector('input');
       let filter = input.value.toUpperCase();
       let newList = document.querySelectorAll('.student-item');
 
