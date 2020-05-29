@@ -93,8 +93,8 @@ function searchBar() {
 
    // Selects students based on user input and hides unselected students
    // Updates as user types.
-   document.querySelector('input').addEventListener('keyup', (e) => {
-      let input = e.target;
+
+   function studentFilter(input) {
       let filter = input.value.toUpperCase();
       let newList = document.querySelectorAll('.student-item');
 
@@ -113,30 +113,18 @@ function searchBar() {
       }
       const arr = document.getElementsByClassName('selected');
       appendPageLinks(arr);
+   }
+
+   document.querySelector('input').addEventListener('keyup', (e) => {
+      let input = e.target;
+      studentFilter(input);
    })
    
    // Selects students based on user input and hides unselected students
    // Updates when user clicks 'submit' (Used if name is pasted in search bar)
    document.querySelector('button').addEventListener('click', (e) => {
       let input = document.querySelector('input');
-      let filter = input.value.toUpperCase();
-      let newList = document.querySelectorAll('.student-item');
-
-      for(i = 0; i < newList.length; i++){
-         let li = newList[i];
-         let name = newList[i].getElementsByTagName('h3')[0];
-         let value = name.textContent;
-
-         if(value.toUpperCase().indexOf(filter) > -1){
-            li.style.display = '';
-            li.className = 'student-item cf selected';
-         } else{
-            li.style.display = 'none';
-            li.className = 'student-item cf';
-         }
-      }
-      const arr = document.getElementsByClassName('selected');
-      appendPageLinks(arr);
+      studentFilter(input);
    })
 }
 
