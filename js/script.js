@@ -67,19 +67,41 @@ function appendPageLinks(list) {
  * searchBar() is used to search for a specific person, or group of people. 
  ***/
 
- function searchBar() {
-    const newDiv = document.createElement('div');
-    newDiv.className = 'student-search';
-    document.querySelector('.page-header').appendChild(newDiv);
+function searchBar() {
+   const newDiv = document.createElement('div');
+   newDiv.className = 'student-search';
+   document.querySelector('.page-header').appendChild(newDiv);
+   
+   const newInput = document.createElement('input');
+   newInput.placeholder = 'Search for students...';
+   document.querySelector('.student-search').appendChild(newInput);
+   
+   const newButton = document.createElement('button')
+   newButton.innerText = 'Search';
+   document.querySelector('.student-search').appendChild(newButton);
 
-    const newInput = document.createElement('input');
-    newInput.placeholder = 'Search for students...';
-    document.querySelector('.student-search').appendChild(newInput);
+   document.querySelector('input').addEventListener('keyup', (e) => {
+      let input = e.target;
+      let filter = input.value.toUpperCase();
+      let list = document.querySelectorAll('.student-item');
 
-    const newButton = document.createElement('button')
-    newButton.innerText = 'Search';
-    document.querySelector('.student-search').appendChild(newButton);
- }
+      for(i = 0; i < list.length; i++){
+         let li = list[i];
+         let name = list[i].getElementsByTagName('h3')[0];
+         let value = name.textContent;
+
+         if(value.toUpperCase().indexOf(filter) > -1){
+            li.style.display = 'block';
+            li.className = 'student-item cf selected';
+         } else{
+            li.style.display = 'none';
+            li.className = 'student-item cf';
+         }
+      }
+      const arr = document.getElementsByClassName('selected');
+      appendPageLinks(arr);
+   })
+}
 
 /***
  *  Call functions
