@@ -32,11 +32,13 @@ function showPage(list, page) {
 function appendPageLinks(list) {
    const numPages = Math.floor(list.length/pageItems);
 
+   // Removes existing <div>, so extra page links aren't created
    const existingDiv = document.querySelector('.pagination');
    if (existingDiv){
       existingDiv.parentNode.removeChild(existingDiv);
    }
    
+   // Creates <ul> within <div> and appends to page
    const newDiv = document.createElement('div');
    newDiv.className = 'pagination';
    document.querySelector('.page').appendChild(newDiv);
@@ -45,6 +47,8 @@ function appendPageLinks(list) {
    newUl.className = 'pageButtons';
    document.querySelector('.pagination').appendChild(newUl);
 
+   // Creates <a> within <li> inserted into the <ul>
+   // Number of <a> created is based on number of students in list
    for(let i = 0; i <= numPages; i++){
       let newLi = document.createElement('li');
       let newA = document.createElement('a');
@@ -57,6 +61,7 @@ function appendPageLinks(list) {
       showPage(list, 1);
       newUl.firstElementChild.firstElementChild.className = 'active';
       
+      // Navigate through the different pages
       newA.addEventListener('click', (e) => {
          let active = document.querySelector('.active');
          if(active !== null){
@@ -73,6 +78,7 @@ function appendPageLinks(list) {
  ***/
 
 function searchBar() {
+   // Creates <input> and <button> within a <div> and appends to page
    const newDiv = document.createElement('div');
    newDiv.className = 'student-search';
    document.querySelector('.page-header').appendChild(newDiv);
@@ -85,6 +91,8 @@ function searchBar() {
    newButton.innerText = 'Search';
    document.querySelector('.student-search').appendChild(newButton);
 
+   // Selects students based on user input and hides unselected students
+   // Updates as user types.
    document.querySelector('input').addEventListener('keyup', (e) => {
       let input = e.target;
       let filter = input.value.toUpperCase();
@@ -107,6 +115,8 @@ function searchBar() {
       appendPageLinks(arr);
    })
    
+   // Selects students based on user input and hides unselected students
+   // Updates when user clicks 'submit' (Used if name is pasted in search bar)
    document.querySelector('button').addEventListener('click', (e) => {
       let input = document.querySelector('input');
       let filter = input.value.toUpperCase();
