@@ -126,6 +126,17 @@ function searchBar() {
       }
       const arr = document.getElementsByClassName('selected');
       appendPageLinks(arr);
+      const noResults = document.createElement('h1');
+      noResults.className = 'noResults';
+      noResults.style.display = 'none';
+      noResults.innerText = 'No Results';
+      document.querySelector('.page').appendChild(noResults);
+   
+      if(newList.length === 0){
+         noResults.style.display = 'block';
+      }else{
+         noResults.style.display = 'none';
+      }
    }
 
    document.querySelector('input').addEventListener('keyup', (e) => {
