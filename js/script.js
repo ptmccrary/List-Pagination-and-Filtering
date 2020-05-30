@@ -47,29 +47,42 @@ function appendPageLinks(list) {
    newUl.className = 'pageButtons';
    document.querySelector('.pagination').appendChild(newUl);
 
+   // Displays 'No Results' if no students are loaded
+   const noResults = document.createElement('h1');
+   noResults.className = 'noResults';
+   noResults.style.display = 'none';
+   noResults.innerText = 'No Results';
+   document.querySelector('.page').appendChild(noResults);
+
+   if(list.length === 0){
+      noResults.style.display = 'block';
+   }
+
    // Creates <a> within <li> inserted into the <ul>
    // Number of <a> created is based on number of students in list
-   for(let i = 0; i <= numPages; i++){
-      let newLi = document.createElement('li');
-      let newA = document.createElement('a');
-
-      newA.href = '#';
-      newA.innerText = i + 1;
-      newLi.appendChild(newA);
-      document.querySelector('.pageButtons').appendChild(newLi);
-
-      showPage(list, 1);
-      newUl.firstElementChild.firstElementChild.className = 'active';
-      
-      // Navigate through the different pages
-      newA.addEventListener('click', (e) => {
-         let active = document.querySelector('.active');
-         if(active !== null){
-            active.classList.remove('active');
-         }
-         e.target.className = 'active';
-         showPage(students, newA.textContent)
-      })
+   if(list.length > 0){
+      for(let i = 0; i <= numPages; i++){
+         let newLi = document.createElement('li');
+         let newA = document.createElement('a');
+   
+         newA.href = '#';
+         newA.innerText = i + 1;
+         newLi.appendChild(newA);
+         document.querySelector('.pageButtons').appendChild(newLi);
+   
+         showPage(list, 1);
+         newUl.firstElementChild.firstElementChild.className = 'active';
+         
+         // Navigate through the different pages
+         newA.addEventListener('click', (e) => {
+            let active = document.querySelector('.active');
+            if(active !== null){
+               active.classList.remove('active');
+            }
+            e.target.className = 'active';
+            showPage(students, newA.textContent)
+         })
+      }
    }
 }
 
