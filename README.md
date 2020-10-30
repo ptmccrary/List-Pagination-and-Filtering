@@ -1,9 +1,13 @@
 # List Pagination and Filtering
 
- Displays list of 54 Students
+The page contains a list of 54 student names, photos and email addresses. It displays 10 names at a time, and adds a navigation system (a series of links at the bottom of the page) to let users click through the other student entries, 10 at a time.
 
- Added JavaScript to filter the number of students per page to 10 and paginate the student list based on the amount of students.
+The page still displays the students' names without JavaScript turned on, but will be much improved with the JavaScript programming added.
 
- Added the search bar for extra work to search for a specific student. Used the keyup event listener to update the list as the user types, as well as a click event listener to the button for someone who pastes a name in the search bar.
+The pagination solution works with a list of any number of students, not just with the supplied list of 54 students.
 
- Program will display 'No Results' if there are no matches within the search bar.
+## Usage
+
+- You can navigate through the list of students using the nav buttons at the button of the page.
+
+- You can also search for a specific student using the search bar, updating the list in real time as you type.
